@@ -1,48 +1,122 @@
-# Milestone 1: Portfolio Foundation
+# Milestone 01 — Foundation and Responsive Site Shell
 
 ## Status
 
-Completed as a fast-tracked foundation milestone.
+Implemented and awaiting final review.
 
-## Scope
+## Goal
 
-- Next.js App Router foundation
-- TypeScript project structure
-- Tailwind CSS global design system
-- Responsive site shell
-- Server-rendered header navigation
-- Footer
-- Placeholder Home, Projects, and About pages
-- Required repository directories
-- Permanent Codex project instructions
+Create the technical foundation and basic responsive shell for the Build With AI Developer Portfolio.
 
-## Included Pages
+## Included Scope
 
-- Home
-- Projects
-- About
+* Next.js App Router
+* TypeScript
+* Tailwind CSS
+* ESLint
+* `typecheck` npm script
+* basic global design foundation
+* shared site header
+* shared site footer
+* responsive navigation
+* minimal Home page
+* placeholder Projects page
+* placeholder About page
+* permanent `AGENTS.md`
+* initial portfolio directories
 
-## Constraints
+## Required Routes
 
-- No real project content
-- No project cards
-- No fabricated personal or professional information
-- No database
-- No backend
-- No CMS
-- No APIs
-- No analytics
-- No authentication
-- No deployment work
-- No animations
-- No additional packages
+* `/`
+* `/projects`
+* `/about`
+
+## Required Components
+
+* `components/site-header.tsx`
+* `components/site-footer.tsx`
+
+Do not add more abstractions unless necessary.
+
+## Design Direction
+
+* professional
+* minimal
+* technical
+* restrained neutral styling
+* readable typography
+* responsive spacing
+* no animations
+* no excessive gradients
+* no decorative graphics
+
+This is only the foundation. It is not the final visual design.
+
+## Content Rules
+
+Pages may contain short, honest placeholder content describing their future purpose.
+
+Do not add:
+
+* detailed project content
+* project cards
+* metrics
+* employment information
+* biography claims
+* resume content
+
+## Accessibility
+
+* semantic `header`, `nav`, `main`, and `footer`
+* one page-level heading per route
+* keyboard-accessible navigation
+* visible focus styles
+* accessible contrast
+* no horizontal mobile overflow
+
+## Explicitly Excluded
+
+* project data model
+* project cards
+* case-study pages
+* final Home page content
+* resume
+* contact section
+* dark-mode toggle
+* animations
+* external APIs
+* database
+* CMS
+* authentication
+* analytics
+* deployment
 
 ## Validation
 
-Run these commands after implementation:
+Run:
 
-```bash
-npm run lint
-npm run typecheck
-npm run build
-```
+* `npm run lint`
+* `npm run typecheck`
+* `npm run build`
+
+Manually verify:
+
+* `/`
+* `/projects`
+* `/about`
+* navigation links
+* narrow mobile width
+* no obvious overflow
+
+## Acceptance Criteria
+
+* all three routes load
+* shared header and footer appear
+* navigation works
+* mobile layout remains usable
+* lint passes
+* type checking passes
+* production build passes
+* no unnecessary packages were added
+* no unsupported information was fabricated
+* no future milestone was implemented
