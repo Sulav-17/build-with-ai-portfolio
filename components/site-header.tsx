@@ -4,6 +4,7 @@ const navigationItems = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader() {
@@ -14,7 +15,7 @@ export function SiteHeader() {
           href="/"
           className="text-base font-semibold tracking-normal text-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
         >
-          Portfolio
+          Sulav Baral
         </Link>
 
         <nav aria-label="Main navigation">
