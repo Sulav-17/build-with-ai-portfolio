@@ -2,9 +2,9 @@
 
 ## Project
 
-Build With AI — Developer Portfolio
+Sulav Baral Portfolio
 
-A professional Next.js portfolio presenting verified AI, data, automation, backend, and software-engineering projects.
+A professional Next.js portfolio for Sulav Baral, AI Engineer & Software Developer, presenting verified AI, data, automation, backend, and software-engineering projects.
 
 ## Authority
 
