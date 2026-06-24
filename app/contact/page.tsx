@@ -1,4 +1,6 @@
 import { SocialLinks } from "@/components/social-links";
+import { Reveal } from "@/components/reveal";
+import { SectionHeading } from "@/components/section-heading";
 import { profile } from "@/content/profile";
 import { createPageMetadata } from "@/lib/site-config";
 
@@ -11,22 +13,28 @@ export const metadata = createPageMetadata({
 
 export default function ContactPage() {
   return (
-    <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
-      <div className="max-w-3xl">
-        <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-600">
-          Contact
-        </p>
-        <h1 className="text-3xl font-semibold tracking-normal text-slate-950 sm:text-4xl">
-          Connect about practical AI, data, automation, and backend work.
-        </h1>
-        <p className="mt-5 text-base leading-7 text-slate-700">
-          For professional context, project review, or collaboration
-          discussions, use the available profile link below.
-        </p>
-        <div className="mt-8">
-          <SocialLinks profile={profile} />
+    <section className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <SectionHeading
+        eyebrow="Contact"
+        title="Connect about practical AI, data, automation, and backend work."
+        description="For professional context, project review, or collaboration discussions, use the verified profile links below."
+        level="h1"
+      />
+
+      <Reveal delay={100}>
+        <div className="premium-card p-6 sm:p-8">
+          <p className="mono-label text-[var(--accent-cyan)]">
+            Verified profile links
+          </p>
+          <div className="mt-6">
+            <SocialLinks profile={profile} />
+          </div>
+          <p className="mt-6 text-sm leading-6 text-[var(--text-muted)]">
+            No contact form, email address, or availability status is displayed
+            until verified information is supplied.
+          </p>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

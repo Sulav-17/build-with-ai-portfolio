@@ -4,7 +4,7 @@ export const profile: Profile = {
   name: "Sulav Baral",
   professionalHeadline: "AI Engineer & Software Developer",
   shortIntroduction:
-    "I build end-to-end applications across applied AI, data engineering, automation, backend development, and machine learning--with a focus on making complex workflows useful, reliable, and easier to understand.",
+    "I create end-to-end applications across applied AI, data engineering, automation, backend development, and machine learning with a focus on reliability, clarity, and real-world usefulness.",
   currentFocus: [
     "Applied AI systems",
     "Backend and automation workflows",
@@ -63,6 +63,6 @@ export const profile: Profile = {
     },
   ],
   githubUrl: "https://github.com/Sulav-17",
-  linkedInUrl: null,
+  linkedInUrl: "https://www.linkedin.com/in/sulavbaral17",
   email: null,
 };

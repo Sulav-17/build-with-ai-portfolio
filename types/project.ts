@@ -1,5 +1,13 @@
 export type ProjectStatus = "Completed";
 
+export type ProjectVisualVariant =
+  | "activity-flow"
+  | "retrieval-flow"
+  | "analysis-flow"
+  | "pipeline-flow";
+
+export type ProjectAccent = "cyan" | "violet" | "blue" | "indigo-cyan";
+
 export type ProjectScreenshot = {
   src: string;
   alt: string;
@@ -15,6 +23,8 @@ export type Project = {
   status: ProjectStatus;
   featured: boolean;
   category: string;
+  visualVariant: ProjectVisualVariant;
+  accent: ProjectAccent;
   technologies: string[];
   problem: string;
   intendedUser: string;

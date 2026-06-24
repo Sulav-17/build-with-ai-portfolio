@@ -12,14 +12,14 @@ export function ProjectMedia({ screenshots }: ProjectMediaProps) {
 
   return (
     <section>
-      <h2 className="text-2xl font-semibold tracking-normal text-slate-950">
+      <h2 className="font-display text-2xl font-semibold tracking-normal text-[var(--text-primary)]">
         Screenshots
       </h2>
       <div className="mt-4 grid gap-5">
         {screenshots.map((screenshot) => (
           <figure
             key={screenshot.src}
-            className="overflow-hidden rounded border border-slate-200 bg-white"
+            className="premium-card overflow-hidden"
           >
             <Image
               src={screenshot.src}
@@ -29,7 +29,7 @@ export function ProjectMedia({ screenshots }: ProjectMediaProps) {
               className="h-auto w-full"
             />
             {screenshot.caption ? (
-              <figcaption className="border-t border-slate-200 px-4 py-3 text-sm leading-6 text-slate-600">
+              <figcaption className="border-t border-[var(--border-soft)] px-4 py-3 text-sm leading-6 text-[var(--text-secondary)]">
                 {screenshot.caption}
               </figcaption>
             ) : null}

@@ -11,6 +11,6 @@ export type Profile = {
   portfolioStatement: string;
   skills: SkillGroup[];
   githubUrl: string;
-  linkedInUrl: string | null;
+  linkedInUrl: string;
   email: string | null;
 };

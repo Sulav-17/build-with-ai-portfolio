@@ -1,5 +1,12 @@
 import Link from "next/link";
+import { CapabilityCard } from "@/components/capability-card";
+import { EngineeringJourney } from "@/components/engineering-journey";
+import { FeaturedProjectPreview } from "@/components/featured-project-preview";
+import { HeroBackground } from "@/components/hero-background";
+import { HeroSystemVisual } from "@/components/hero-system-visual";
 import { ProjectCard } from "@/components/project-card";
+import { Reveal } from "@/components/reveal";
+import { SectionHeading } from "@/components/section-heading";
 import { profile } from "@/content/profile";
 import { featuredProjects } from "@/content/projects";
 import { createPageMetadata, siteConfig } from "@/lib/site-config";
@@ -11,82 +18,156 @@ export const metadata = createPageMetadata({
   path: "/",
 });
 
+const capabilities = [
+  {
+    title: "Applied AI Systems",
+    description:
+      "Grounded AI applications, RAG workflows, embeddings, retrieval, and structured outputs.",
+    tools: ["RAG", "embeddings", "vector databases", "LLM integrations"],
+  },
+  {
+    title: "Backend and Automation",
+    description:
+      "APIs, PostgreSQL, Redis queues, background workers, and containerized services.",
+    tools: ["FastAPI", "PostgreSQL", "Redis", "Docker", "background workers"],
+  },
+  {
+    title: "Data Engineering",
+    description:
+      "Reliable ingestion, transformation, analysis, visualization, and reporting workflows.",
+    tools: ["Python", "SQL", "Pandas", "Plotly", "Power BI"],
+  },
+  {
+    title: "Engineering Quality",
+    description:
+      "Testing, evaluation, documentation, clear architecture, and honest limitations.",
+    tools: ["pytest", "evaluation", "Git", "GitHub", "Docker Compose"],
+  },
+];
+
+const projectOrder = [
+  "ai-content-repurposing-pipeline",
+  "smart-document-qa-system",
+  "ai-data-insight-assistant",
+  "build-log-ai",
+];
+
+const selectedProjects = projectOrder
+  .map((slug) => featuredProjects.find((project) => project.slug === slug))
+  .filter((project): project is (typeof featuredProjects)[number] =>
+    Boolean(project),
+  );
+
 export default function Home() {
   return (
     <>
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
-        <div className="max-w-3xl">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-600">
-            Applied AI • Data Engineering • Automation • Backend Development
-          </p>
-          <h1 className="text-4xl font-semibold tracking-normal text-slate-950 sm:text-5xl">
-            AI Engineer and Software Developer turning messy problems into
-            practical systems.
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-700 sm:text-lg">
-            {profile.shortIntroduction}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/projects"
-              className="rounded bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
-            >
-              View projects
-            </Link>
-            <a
-              href={siteConfig.githubProfile}
-              className="rounded border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-950 hover:border-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-          </div>
+      <section className="hero-section relative overflow-hidden">
+        <HeroBackground />
+        <div className="page-shell hero-grid relative z-10 py-14 lg:py-16">
+          <Reveal>
+            <div className="max-w-[62rem]">
+              <p className="eyebrow">AI ENGINEER &middot; SOFTWARE DEVELOPER</p>
+              <h1 className="hero-heading font-display mt-5 font-bold text-[var(--text-primary)]">
+                <span className="xl:block">I build intelligent systems</span>{" "}
+                <span className="xl:block">that turn messy workflows</span>{" "}
+                <span className="xl:block">into useful software.</span>
+              </h1>
+              <p className="hero-copy mt-7">{profile.shortIntroduction}</p>
+
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link href="/projects" className="button-primary">
+                  Explore My Work
+                </Link>
+                <a
+                  href={profile.githubUrl}
+                  className="button-secondary"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View GitHub
+                </a>
+                <a
+                  href={profile.linkedInUrl}
+                  className="button-secondary"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <p className="hero-proof-line mt-6">
+                4 documented case studies &middot; tested systems &middot; transparent
+                engineering decisions
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120} className="justify-self-center lg:justify-self-end">
+            <div className="hero-atlas-frame">
+              <HeroSystemVisual />
+            </div>
+          </Reveal>
         </div>
+
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 pb-16">
-        <div className="border-y border-slate-200 py-10">
-          <h2 className="text-2xl font-semibold tracking-normal text-slate-950 sm:text-3xl">
-            Current focus
-          </h2>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {profile.currentFocus.map((focus) => (
-              <li
-                key={focus}
-                className="rounded border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700"
-              >
-                {focus}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <FeaturedProjectPreview />
 
-      <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-24">
-        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-600">
-              Selected Projects
-            </p>
-            <h2 className="text-2xl font-semibold tracking-normal text-slate-950 sm:text-3xl">
-              Completed technical projects
-            </h2>
-          </div>
-          <Link
-            href="/projects"
-            className="text-sm font-semibold text-slate-950 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
-          >
+      <section className="section-shell pt-10">
+        <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <SectionHeading
+            eyebrow="Selected Projects"
+            title="Systems with real architecture behind them."
+            description="Four completed case studies show how inputs move through AI, data, backend, automation, and reporting workflows."
+          />
+          <Link href="/projects" className="text-link">
             View all projects
           </Link>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
+        <div className="grid gap-5 lg:grid-cols-6">
+          {selectedProjects.map((project) => {
+            const emphasis =
+              project.slug === "ai-content-repurposing-pipeline"
+                ? "large"
+                : project.slug === "build-log-ai"
+                  ? "wide"
+                  : "medium";
+            const className =
+              emphasis === "large"
+                ? "lg:col-span-6"
+                : emphasis === "wide"
+                  ? "lg:col-span-6"
+                  : "lg:col-span-3";
+
+            return (
+              <Reveal key={project.slug} className={className}>
+                <ProjectCard project={project} emphasis={emphasis} />
+              </Reveal>
+            );
+          })}
         </div>
       </section>
+
+      <section className="section-panel">
+        <div className="section-shell">
+          <SectionHeading
+            eyebrow="Engineering Capabilities"
+            title="Useful systems need more than one layer of engineering."
+            description="The work spans applied AI, backend services, data workflows, automation, and quality practices without presenting skills as ratings."
+          />
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {capabilities.map((capability, index) => (
+              <Reveal key={capability.title} delay={index * 80}>
+                <CapabilityCard {...capability} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <EngineeringJourney />
+
     </>
   );
 }

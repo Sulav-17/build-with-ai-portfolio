@@ -14,12 +14,12 @@ export function SocialLinks({ profile }: SocialLinksProps) {
   );
 
   return (
-    <ul className="flex flex-wrap gap-x-5 gap-y-2">
+    <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
       {links.map((link) => (
         <li key={link.label}>
           <a
             href={link.href}
-            className="font-semibold text-slate-950 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
+            className="font-semibold text-[var(--text-primary)] underline decoration-[rgba(34,211,238,0.35)] underline-offset-4 transition-colors duration-200 hover:text-[var(--accent-cyan)] hover:decoration-[var(--accent-cyan)]"
             target={link.href.startsWith("http") ? "_blank" : undefined}
             rel={link.href.startsWith("http") ? "noreferrer" : undefined}
           >

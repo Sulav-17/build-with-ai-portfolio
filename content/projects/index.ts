@@ -9,6 +9,8 @@ export const projects: Project[] = [
     status: "Completed",
     featured: true,
     category: "Developer Tools",
+    visualVariant: "activity-flow",
+    accent: "cyan",
     technologies: ["Python", "Streamlit", "GitHub API", "Pandas", "pytest"],
     problem:
       "GitHub activity can be difficult to review as a concise record of developer progress.",
@@ -66,6 +68,8 @@ export const projects: Project[] = [
     status: "Completed",
     featured: true,
     category: "RAG and AI Applications",
+    visualVariant: "retrieval-flow",
+    accent: "violet",
     technologies: [
       "Python",
       "Streamlit",
@@ -136,6 +140,8 @@ export const projects: Project[] = [
     status: "Completed",
     featured: true,
     category: "Data and Applied AI",
+    visualVariant: "analysis-flow",
+    accent: "blue",
     technologies: [
       "Python",
       "Pandas",
@@ -207,6 +213,8 @@ export const projects: Project[] = [
     status: "Completed",
     featured: true,
     category: "Automation and Backend Systems",
+    visualVariant: "pipeline-flow",
+    accent: "indigo-cyan",
     technologies: [
       "Python",
       "FastAPI",

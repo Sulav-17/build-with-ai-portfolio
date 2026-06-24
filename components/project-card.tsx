@@ -1,50 +1,74 @@
 import Link from "next/link";
-import type { Project } from "@/types/project";
+import { ProjectVisual } from "@/components/project-visual";
 import { TechnologyTags } from "@/components/technology-tags";
+import type { Project } from "@/types/project";
 
 type ProjectCardProps = {
   project: Project;
+  emphasis?: "large" | "medium" | "wide";
 };
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, emphasis = "medium" }: ProjectCardProps) {
+  const isLarge = emphasis === "large";
+
   return (
-    <article className="flex h-full min-w-0 flex-col rounded border border-slate-200 bg-white p-6">
-      <div className="mb-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-slate-600">
-        <span>{project.status}</span>
-        <span aria-hidden="true">/</span>
-        <span>{project.category}</span>
+    <article
+      className={`premium-card group flex h-full min-w-0 flex-col gap-6 overflow-hidden p-5 transition duration-200 hover:-translate-y-1 hover:border-[rgba(34,211,238,0.42)] focus-within:-translate-y-1 focus-within:border-[rgba(34,211,238,0.42)] sm:p-6 ${
+        isLarge ? "lg:grid lg:grid-cols-[1fr_0.92fr] lg:items-stretch" : ""
+      }`}
+    >
+      <div className="flex min-w-0 flex-col">
+        <div className="mb-4 flex flex-wrap gap-2 font-mono-ui text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[var(--text-muted)]">
+          <span>{project.status}</span>
+          <span aria-hidden="true">/</span>
+          <span>{project.category}</span>
+        </div>
+
+        <h3 className="font-display text-2xl font-semibold leading-tight tracking-normal text-[var(--text-primary)]">
+          {project.title}
+        </h3>
+        <p className="mt-4 flex-1 text-sm leading-6 text-[var(--text-secondary)]">
+          {project.problem}
+        </p>
+
+        <div className="mt-5">
+          <TechnologyTags technologies={project.technologies} limit={5} />
+        </div>
+
+        <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+          <Link href={`/projects/${project.slug}`} className="text-link">
+            View case study
+          </Link>
+          {project.githubUrl ? (
+            <a
+              href={project.githubUrl}
+              className="text-link"
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`View source code for ${project.title} on GitHub`}
+            >
+              GitHub
+            </a>
+          ) : null}
+          {project.demoUrl ? (
+            <a
+              href={project.demoUrl}
+              className="text-link"
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`View live demo for ${project.title}`}
+            >
+              Live demo
+            </a>
+          ) : null}
+        </div>
       </div>
 
-      <h2 className="text-xl font-semibold tracking-normal text-slate-950">
-        {project.title}
-      </h2>
-      <p className="mt-3 flex-1 text-sm leading-6 text-slate-700">
-        {project.shortDescription}
-      </p>
-
-      <div className="mt-5">
-        <TechnologyTags technologies={project.technologies} limit={5} />
-      </div>
-
-      <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
-        <Link
-          href={`/projects/${project.slug}`}
-          className="inline-flex w-fit text-sm font-semibold text-slate-950 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
-        >
-          View case study
-        </Link>
-        {project.githubUrl ? (
-          <a
-            href={project.githubUrl}
-            className="inline-flex w-fit text-sm font-semibold text-slate-950 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`View source code for ${project.title} on GitHub`}
-          >
-            Source code
-          </a>
-        ) : null}
-      </div>
+      <ProjectVisual
+        variant={project.visualVariant}
+        accent={project.accent}
+        compact={!isLarge}
+      />
     </article>
   );
 }
