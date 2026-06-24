@@ -8,7 +8,7 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="flex h-full flex-col rounded border border-slate-200 bg-white p-6">
+    <article className="flex h-full min-w-0 flex-col rounded border border-slate-200 bg-white p-6">
       <div className="mb-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-slate-600">
         <span>{project.status}</span>
         <span aria-hidden="true">/</span>
@@ -26,12 +26,25 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <TechnologyTags technologies={project.technologies} limit={5} />
       </div>
 
-      <Link
-        href={`/projects/${project.slug}`}
-        className="mt-6 inline-flex w-fit text-sm font-semibold text-slate-950 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
-      >
-        View case study
-      </Link>
+      <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+        <Link
+          href={`/projects/${project.slug}`}
+          className="inline-flex w-fit text-sm font-semibold text-slate-950 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
+        >
+          View case study
+        </Link>
+        {project.githubUrl ? (
+          <a
+            href={project.githubUrl}
+            className="inline-flex w-fit text-sm font-semibold text-slate-950 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`View source code for ${project.title} on GitHub`}
+          >
+            Source code
+          </a>
+        ) : null}
+      </div>
     </article>
   );
 }

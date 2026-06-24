@@ -8,7 +8,7 @@ export type Profile = {
   professionalHeadline: string;
   shortIntroduction: string;
   currentFocus: string[];
-  buildWithAIStatement: string;
+  portfolioStatement: string;
   skills: SkillGroup[];
   githubUrl: string;
   linkedInUrl: string | null;

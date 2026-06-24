@@ -12,7 +12,7 @@ export function TechnologyTags({ technologies, limit }: TechnologyTagsProps) {
       {visibleTechnologies.map((technology) => (
         <li
           key={technology}
-          className="rounded border border-slate-300 bg-white px-2.5 py-1 text-xs font-medium text-slate-700"
+          className="max-w-full break-words rounded border border-slate-300 bg-white px-2.5 py-1 text-xs font-medium text-slate-700"
         >
           {technology}
         </li>

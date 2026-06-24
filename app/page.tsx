@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ProjectCard } from "@/components/project-card";
 import { profile } from "@/content/profile";
 import { featuredProjects } from "@/content/projects";
+import { createPageMetadata, siteConfig } from "@/lib/site-config";
 
-export const metadata: Metadata = {
-  title: "Sulav Baral | Applied AI and Data Portfolio",
+export const metadata = createPageMetadata({
+  title: siteConfig.defaultTitle,
   description:
-    "Portfolio for Sulav Baral, an emerging applied AI, data, automation, and backend developer.",
-};
+    "The personal portfolio of Sulav Baral, an AI Engineer and Software Developer building practical systems across applied AI, data engineering, automation, backend development, and machine learning.",
+  path: "/",
+});
 
 export default function Home() {
   return (
@@ -16,10 +17,11 @@ export default function Home() {
       <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-24">
         <div className="max-w-3xl">
           <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-600">
-            AI • Data • Automation • Backend
+            Applied AI • Data Engineering • Automation • Backend Development
           </p>
           <h1 className="text-4xl font-semibold tracking-normal text-slate-950 sm:text-5xl">
-            Building practical AI and data systems, one project at a time.
+            AI Engineer and Software Developer turning messy problems into
+            practical systems.
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-7 text-slate-700 sm:text-lg">
             {profile.shortIntroduction}
@@ -32,7 +34,7 @@ export default function Home() {
               View projects
             </Link>
             <a
-              href={profile.githubUrl}
+              href={siteConfig.githubProfile}
               className="rounded border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-950 hover:border-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
               target="_blank"
               rel="noreferrer"
@@ -68,7 +70,7 @@ export default function Home() {
               Selected Projects
             </p>
             <h2 className="text-2xl font-semibold tracking-normal text-slate-950 sm:text-3xl">
-              Completed Build With AI projects
+              Completed technical projects
             </h2>
           </div>
           <Link

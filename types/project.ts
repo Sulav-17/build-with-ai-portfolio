@@ -1,5 +1,13 @@
 export type ProjectStatus = "Completed";
 
+export type ProjectScreenshot = {
+  src: string;
+  alt: string;
+  caption?: string;
+  width: number;
+  height: number;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -22,6 +30,6 @@ export type Project = {
   githubUrl: string | null;
   demoUrl: string | null;
   videoUrl: string | null;
-  screenshots: string[] | null;
+  screenshots: ProjectScreenshot[];
   completedDate: string;
 };

@@ -1,5 +1,13 @@
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/content/projects";
+import { createPageMetadata } from "@/lib/site-config";
+
+export const metadata = createPageMetadata({
+  title: "Projects | Sulav Baral",
+  description:
+    "Completed project case studies covering applied AI, data, automation, and backend systems.",
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (
@@ -9,7 +17,7 @@ export default function ProjectsPage() {
           Projects
         </p>
         <h1 className="text-3xl font-semibold tracking-normal text-slate-950 sm:text-4xl">
-          Completed Build With AI projects
+          Completed technical projects
         </h1>
         <p className="mt-5 text-base leading-7 text-slate-700">
           Four completed projects are published as concise case studies using a

@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { SocialLinks } from "@/components/social-links";
 import { profile } from "@/content/profile";
+import { createPageMetadata } from "@/lib/site-config";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Contact | Sulav Baral",
   description:
     "Professional contact information for Sulav Baral's applied AI, data, automation, and backend portfolio.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProjectMedia } from "@/components/project-media";
 import { TechnologyTags } from "@/components/technology-tags";
 import { getProjectBySlug, projects } from "@/content/projects";
+import { createPageMetadata } from "@/lib/site-config";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -28,10 +30,11 @@ export async function generateMetadata({
     };
   }
 
-  return {
-    title: `${project.title} | Portfolio`,
+  return createPageMetadata({
+    title: `${project.title} | Sulav Baral`,
     description: project.shortDescription,
-  };
+    path: `/projects/${project.slug}`,
+  });
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
@@ -43,9 +46,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   const projectLinks = [
-    { label: "GitHub source", href: project.githubUrl },
-    { label: "Live demo", href: project.demoUrl },
+    { label: "View source code", href: project.githubUrl },
     { label: "Recorded demo", href: project.videoUrl },
+    { label: "Live demo", href: project.demoUrl },
   ].filter((link): link is { label: string; href: string } =>
     Boolean(link.href),
   );
@@ -97,6 +100,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           title="Future Improvements"
           items={project.futureImprovements}
         />
+        <ProjectMedia screenshots={project.screenshots} />
 
         <section>
           <h2 className="text-2xl font-semibold tracking-normal text-slate-950">
@@ -109,6 +113,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   <a
                     href={link.href}
                     className="font-semibold text-slate-950 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-950"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${link.label} for ${project.title}`}
                   >
                     {link.label}
                   </a>

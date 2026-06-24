@@ -2,18 +2,17 @@ import type { Profile } from "@/types/profile";
 
 export const profile: Profile = {
   name: "Sulav Baral",
-  professionalHeadline:
-    "Emerging applied AI, data, automation, and backend developer building practical systems through the Build With AI roadmap.",
+  professionalHeadline: "AI Engineer & Software Developer",
   shortIntroduction:
-    "Sulav builds real systems involving applied AI, data workflows, automation, and backend engineering while documenting technical decisions, challenges, testing, and lessons learned.",
+    "I build end-to-end applications across applied AI, data engineering, automation, backend development, and machine learning--with a focus on making complex workflows useful, reliable, and easier to understand.",
   currentFocus: [
     "Applied AI systems",
     "Backend and automation workflows",
     "Data and machine-learning engineering",
     "Reliable, tested software",
   ],
-  buildWithAIStatement:
-    "Build With AI is a structured learning and portfolio system focused on real projects, testing, documentation, honest limitations, and continuous improvement.",
+  portfolioStatement:
+    "AI Engineer and Software Developer building practical AI, data, automation, and backend systems.",
   skills: [
     {
       category: "AI and LLM Applications",

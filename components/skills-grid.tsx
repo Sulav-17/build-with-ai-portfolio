@@ -23,7 +23,7 @@ export function SkillsGrid({ skills }: SkillsGridProps) {
               {group.skills.map((skill) => (
                 <li
                   key={skill}
-                  className="rounded border border-slate-300 bg-white px-2.5 py-1 text-sm font-medium text-slate-700"
+                  className="max-w-full break-words rounded border border-slate-300 bg-white px-2.5 py-1 text-sm font-medium text-slate-700"
                 >
                   {skill}
                 </li>

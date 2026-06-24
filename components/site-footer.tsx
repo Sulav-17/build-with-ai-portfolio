@@ -8,7 +8,7 @@ export function SiteFooter() {
         <div>
           <p className="font-semibold text-slate-950">{profile.name}</p>
           <p className="mt-2 max-w-2xl leading-6">
-            {profile.buildWithAIStatement}
+            {profile.portfolioStatement}
           </p>
         </div>
         <SocialLinks profile={profile} />
